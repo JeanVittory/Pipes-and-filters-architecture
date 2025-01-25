@@ -1,11 +1,14 @@
 import express from 'express';
 import { EACCES, EADDRINUSE, PORT, PREFIX_API } from '../constants';
 import router from '../routes';
+import { errorHandler } from './middlewares/errorHandler';
 
 function init() {
   const app = express();
 
   app.use(PREFIX_API, router);
+
+  app.use(errorHandler);
 
   const server = app.listen(PORT, () => {
     console.log(`Server running at port ${PORT}`);
