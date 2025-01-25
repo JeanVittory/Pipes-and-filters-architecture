@@ -1,0 +1,8 @@
+services:
+  backend:
+    container_name: 'pipes-filters-architecture'
+    ports:
+      - '4000:4000'
+    build: .
+    volumes:
+      - .:/app
