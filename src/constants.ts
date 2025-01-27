@@ -22,7 +22,7 @@ export const REGEX_REMOVE_NEW_LINES = /\n{2,}/g;
 
 export const KEYWORDS_BY_CATEGORY = new Map<CATEGORIES, string[]>([
   [CATEGORIES.URGENT, ['urgente', 'importante', 'prioridad']],
-  [CATEGORIES.IRFORMATION, ['información', 'detalles', 'documentación']],
+  [CATEGORIES.INFORMATION, ['información', 'detalles', 'documentación']],
   [CATEGORIES.ADVERTISING, ['oferta', 'descuento', 'promoción']],
   [CATEGORIES.UNKNOWN, []],
 ]);
