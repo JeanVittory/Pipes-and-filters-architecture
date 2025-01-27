@@ -3,6 +3,7 @@ import { EACCES, EADDRINUSE, PORT, PREFIX_API } from '../constants';
 import router from '../routes';
 import { errorHandler } from '../middlewares/errorHandler';
 import logger from './logs/winston';
+import { loadClassifier } from './bayesian/loadData';
 
 function init() {
   const app = express();
@@ -10,6 +11,8 @@ function init() {
   app.use(PREFIX_API, router);
 
   app.use(errorHandler);
+
+  loadClassifier();
 
   const server = app.listen(PORT, () => {
     logger.verbose(`Server running at port ${PORT}`);
