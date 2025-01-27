@@ -9,7 +9,7 @@ export const uploadFileMiddleware = (
   res: Response,
   next: NextFunction
 ) => {
-  logger.info(`Executing function uploadFileMiddleware...`);
+  logger.verbose(`Executing function uploadFileMiddleware...`);
 
   const fileDetails = extractFileDetails(req.file);
 
@@ -18,6 +18,8 @@ export const uploadFileMiddleware = (
       `${fileDetails}\nThe property file do not exist within request object`
     );
     res.status(BadRequest.code).json({ error: BadRequest.message });
+    logger.verbose(`Finishing function uploadFileMiddleware...`);
+
     return;
   }
 
@@ -26,12 +28,16 @@ export const uploadFileMiddleware = (
       `${fileDetails}\nThe property buffer do not exist within file object`
     );
     res.status(BadRequest.code).json({ error: BadRequest.message });
+    logger.verbose(`Finishing function uploadFileMiddleware...`);
+
     return;
   }
 
   if (!req.file.buffer.length) {
     logger.error(`${fileDetails}\nThe property buffer do not contains data`);
     res.status(BadRequest.code).json({ error: BadRequest.message });
+    logger.verbose(`Finishing function uploadFileMiddleware...`);
+
     return;
   }
 
@@ -40,6 +46,8 @@ export const uploadFileMiddleware = (
       `${fileDetails}\nThe file size has ${req.file.size} and must be greater than 0`
     );
     res.status(BadRequest.code).json({ error: BadRequest.message });
+    logger.verbose(`Finishing function uploadFileMiddleware...`);
+
     return;
   }
   if (req.file.size > MAX_FILE_SIZE_IN_BYTES) {
@@ -47,8 +55,11 @@ export const uploadFileMiddleware = (
       `${fileDetails}\nThe file size has ${req.file.size} and must be less than ${MAX_FILE_SIZE_IN_BYTES}`
     );
     res.status(BadRequest.code).json({ error: BadRequest.message });
+    logger.verbose(`Finishing function uploadFileMiddleware...`);
+
     return;
   }
+  logger.verbose(`Finishing function uploadFileMiddleware...`);
 
   next();
 };

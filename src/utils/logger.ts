@@ -2,7 +2,7 @@ import logger from '../config/logs/winston';
 import { IMulterFile } from '../models/uploadFile';
 
 export const extractFileDetails = (file: IMulterFile | undefined) => {
-  logger.info(`Executing function extractFileDetails...`);
+  logger.verbose(`Executing function extractFileDetails...`);
   return file
     ? `File Details:
   - Fieldname: ${file.fieldname || null}

@@ -3,7 +3,7 @@ import path from 'path';
 import { FILE_EXTENSION, MULTER_MESSAGE_ERROR_EXT_FILE } from '../constants';
 import logger from '../config/logs/winston';
 
-logger.info(`Executing multerMiddleware file...`);
+logger.verbose(`Executing multerMiddleware file...`);
 
 const storage = multer.memoryStorage();
 const upload = multer({
@@ -16,6 +16,6 @@ const upload = multer({
   },
 });
 
-logger.info(`End multerMiddleware file`);
+logger.verbose(`End multerMiddleware file`);
 
 export default upload.single('file');

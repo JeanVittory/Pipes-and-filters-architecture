@@ -12,7 +12,7 @@ function init() {
   app.use(errorHandler);
 
   const server = app.listen(PORT, () => {
-    logger.info(`Server running at port ${PORT}`);
+    logger.verbose(`Server running at port ${PORT}`);
   });
 
   server.on('error', (error) => {

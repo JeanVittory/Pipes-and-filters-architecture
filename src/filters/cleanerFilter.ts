@@ -5,9 +5,10 @@ import {
   REGEX_REMOVE_WHITESPACE,
   REGEX_REMOVE_WHITESPACE_AT_NEWLINE,
 } from '../constants';
+import { IFilterResult } from '../models/filters';
 
-export const cleanerFilter = (stream: string) => {
-  logger.info('Executing cleanerFilter function...');
+export const cleanerFilter = (stream: string): IFilterResult => {
+  logger.verbose('Executing cleanerFilter function...');
 
   const streamWithNoSpecialCharacters = removeSpecialCharacters(stream);
 
@@ -16,19 +17,21 @@ export const cleanerFilter = (stream: string) => {
   );
 
   const streamWithNoNewlines = removeNewlines(streamWithNoWhitespaces);
-
-  logger.info('Finishing cleanerFilter function...');
-  return streamWithNoNewlines;
+  logger.verbose('Finishing cleanerFilter function...');
+  return {
+    result: streamWithNoNewlines,
+    filtersApplied: ['cleaner filter'],
+  };
 };
 
 const removeSpecialCharacters = (stream: string): string => {
-  logger.info('Executing removeSpecialCharacters function...');
+  logger.verbose('Executing removeSpecialCharacters function...');
 
   return stream.replace(REGEX_ONLY_NUMBERS_AND_LETTERS, '');
 };
 
 const removeWhitespaces = (stream: string): string => {
-  logger.info('Executing removeWhitespaces function...');
+  logger.verbose('Executing removeWhitespaces function...');
 
   const streamWithNoWhiteSpaces = stream
     .replace(REGEX_REMOVE_WHITESPACE, ' ')
@@ -40,7 +43,7 @@ const removeWhitespaces = (stream: string): string => {
 };
 
 const removeNewlines = (stream: string): string => {
-  logger.info('Executing removeNewlines function...');
+  logger.verbose('Executing removeNewlines function...');
 
   return stream.trim().replace(REGEX_REMOVE_NEW_LINES, '\n');
 };
