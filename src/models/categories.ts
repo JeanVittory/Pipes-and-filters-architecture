@@ -1,6 +1,6 @@
 export enum CATEGORIES {
   URGENT = 'urgente',
-  IRFORMATION = 'informacion',
+  INFORMATION = 'informacion',
   ADVERTISING = 'publicidad',
   UNKNOWN = 'otros',
 }
