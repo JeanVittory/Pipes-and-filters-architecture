@@ -1,5 +1,12 @@
 export interface IFilterResult {
-  result: string | number;
+  text: string;
   filtersApplied: string[];
   category?: string;
+  counter?: ICounter;
+}
+
+interface ICounter {
+  words: number;
+  lines: number;
+  characters: number;
 }
