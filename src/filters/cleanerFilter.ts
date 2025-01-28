@@ -19,7 +19,7 @@ export const cleanerFilter = (stream: string): IFilterResult => {
   const streamWithNoNewlines = removeNewlines(streamWithNoWhitespaces);
   logger.verbose('Finishing cleanerFilter function...');
   return {
-    result: streamWithNoNewlines,
+    text: streamWithNoNewlines,
     filtersApplied: ['cleaner filter'],
   };
 };
