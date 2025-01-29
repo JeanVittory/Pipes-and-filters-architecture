@@ -1,12 +1,15 @@
 import logger from '../config/logs/winston';
+import { IFilterResult } from '../models/filters';
 
 export const pipe = (
-  stream: string | number,
+  stream: string | IFilterResult,
   filters: Function[]
-): string | number => {
+): IFilterResult => {
   logger.verbose('Executing pipe function...');
 
-  return filters.reduce((acc, filter) => {
+  const result = filters.reduce((acc: string | IFilterResult, filter) => {
     return filter(acc);
   }, stream);
+
+  return result as IFilterResult;
 };
