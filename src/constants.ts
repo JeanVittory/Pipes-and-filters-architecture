@@ -26,3 +26,5 @@ export const KEYWORDS_BY_CATEGORY = new Map<CATEGORIES, string[]>([
   [CATEGORIES.ADVERTISING, ['oferta', 'descuento', 'promoción']],
   [CATEGORIES.UNKNOWN, []],
 ]);
+
+export const HIGHLIGHT_URGENT = 'URGENTE';
