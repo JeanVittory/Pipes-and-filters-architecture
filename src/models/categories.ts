@@ -4,3 +4,9 @@ export enum CATEGORIES {
   ADVERTISING = 'publicidad',
   UNKNOWN = 'otros',
 }
+
+export type CATEGORIES_TYPE =
+  | 'informacion'
+  | 'urgente'
+  | 'publicidad'
+  | 'otros';
