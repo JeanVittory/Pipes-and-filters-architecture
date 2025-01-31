@@ -6,7 +6,7 @@ export enum CATEGORIES {
 }
 
 export type CATEGORIES_TYPE =
-  | 'informacion'
-  | 'urgente'
-  | 'publicidad'
-  | 'otros';
+  // | 'informacion'
+  'urgente';
+// | 'publicidad'
+//'otros';
