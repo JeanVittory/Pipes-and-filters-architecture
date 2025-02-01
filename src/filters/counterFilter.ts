@@ -19,10 +19,13 @@ export const counterFilter = (stream: IFilterResult): IFilterResult => {
 };
 
 const wordsCounter = (stream: string): number => {
-  return stream.split(' ').length;
+  return stream.split(/\s+/).length;
 };
 
 const newlineCounter = (stream: string) => {
+  if (!stream.endsWith('\n')) {
+    stream += '\n';
+  }
   return (stream.match(/\n/g) || []).length;
 };
 
