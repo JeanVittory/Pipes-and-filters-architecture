@@ -1,6 +1,7 @@
 import natural from 'natural';
 import { fileURLToPath } from 'url';
 import path from 'path';
+import logger from '../logs/winston';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -12,7 +13,7 @@ export const loadClassifier = () => {
     null,
     (err, loadedFile) => {
       if (err) {
-        console.error('Error al cargar el clasificador:', err);
+        logger.error('Error al cargar el clasificador:', err);
         process.exit(1);
       }
       classifier = loadedFile;
@@ -21,6 +22,9 @@ export const loadClassifier = () => {
 };
 
 export const getClassifier = (): natural.BayesClassifier | void => {
-  if (!classifier) return console.log('EL clasificador aun no se ha cargado');
+  if (!classifier) {
+    logger.error('EL clasificador aun no se ha cargado');
+    return;
+  }
   return classifier;
 };
