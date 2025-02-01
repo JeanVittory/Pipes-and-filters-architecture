@@ -2,7 +2,12 @@ import { NextFunction, Request, Response } from 'express';
 import { extractFileDetails } from '../utils/logger';
 import logger from '../config/logs/winston';
 import { BadRequest } from '../models/errorHandler';
-import { MAX_FILE_SIZE_IN_BYTES } from '../constants';
+import {
+  DECODE_FORMAT,
+  MAX_FILE_SIZE_IN_BYTES,
+  ONLY_CONTAINS_NUMBERS_AND_SPECIAL_CHARACTERS,
+  ONLY_CONTAINS_SYMBOLS,
+} from '../constants';
 
 export const uploadFileMiddleware = (
   req: Request,
@@ -59,6 +64,25 @@ export const uploadFileMiddleware = (
 
     return;
   }
+
+  const textDecoded = req.file.buffer.toString(DECODE_FORMAT);
+
+  if (textDecoded.trim().match(ONLY_CONTAINS_SYMBOLS)) {
+    logger.error('The file uploaded only contains symbols');
+    res.status(BadRequest.code).json({ error: BadRequest.message });
+    logger.verbose(`Finishing function uploadFileMiddleware...`);
+    return;
+  }
+
+  if (textDecoded.trim().match(ONLY_CONTAINS_NUMBERS_AND_SPECIAL_CHARACTERS)) {
+    logger.error(
+      'The file uploaded contains only special characters or numbers'
+    );
+    res.status(BadRequest.code).json({ error: BadRequest.message });
+    logger.verbose(`Finishing function uploadFileMiddleware...`);
+    return;
+  }
+
   logger.verbose(`Finishing function uploadFileMiddleware...`);
 
   next();
