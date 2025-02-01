@@ -11,7 +11,9 @@ export const classifierFilter = (
   if (classifier) {
     try {
       const category = classifier.classify(stream.text.toString());
+
       logger.verbose('Finishing classifierFilter function...');
+
       return {
         text: stream.text,
         category,
