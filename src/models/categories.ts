@@ -5,8 +5,4 @@ export enum CATEGORIES {
   UNKNOWN = 'otros',
 }
 
-export type CATEGORIES_TYPE =
-  // | 'informacion'
-  'urgente';
-// | 'publicidad'
-//'otros';
+export type CATEGORIES_ROUTE_TYPE = 'informacion' | 'urgente' | 'publicidad';
