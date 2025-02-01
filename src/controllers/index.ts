@@ -6,5 +6,8 @@ export const loadFileController = (req: Request, res: Response) => {
   logger.verbose(`Executing function loadFileController...`);
   const { file } = req;
   const fileContent = file?.buffer.toString('utf-8');
-  initializeProcess(fileContent!);
+  const dataProcessed = initializeProcess(fileContent!);
+
+  logger.verbose(`Finishing function loadFileController...`);
+  res.status(200).json(dataProcessed);
 };
