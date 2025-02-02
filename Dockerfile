@@ -8,6 +8,8 @@ RUN npm i
 
 COPY . . 
 
+RUN npm run trainClassifier
+
 EXPOSE 4000
 
 CMD ["npm", "run", "dev"]
