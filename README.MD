@@ -19,6 +19,7 @@ This text processor use
 - Multer - Node.js middleware for handling multipart/form-data.
 - Winston - Multi-transport async logging library.
 - Natural - General natural language facility.
+- AWS Cloudwatch - To monitor, store, and access your log files.
 
 ## Installation
 
