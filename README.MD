@@ -13,17 +13,24 @@ Cascading Text Processing with Artificial Intelligence.
 This text processor use
 
 - Typescript - A language for application-scale JavaScript.
+- Express - Fast node.js network app framework.
+- Node.js - Evented I/O for the backend.
+- Docker - platform designed to help developers build, share, and run container applications
 - Multer - Node.js middleware for handling multipart/form-data.
 - Winston - Multi-transport async logging library.
 - Natural - General natural language facility.
-- Node.js - Evented I/O for the backend.
-- Express - Fast node.js network app framework.
 
 ## Installation
 
 ```sh
 npm i
 npm run dev
+```
+
+## Docker
+
+```sh
+docker compose up
 ```
 
 ## Bayesian classifier
